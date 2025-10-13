@@ -1,0 +1,14 @@
+[
+{
+"slug": "bento-portfolio",
+"title": "Interactive Bento Portfolio",
+"summary": "A grid-style portfolio with a chat assistant in the middle.",
+"tech": ["Next.js", "Tailwind", "Supabase", "RAG"]
+},
+{
+"slug": "price-compare",
+"title": "Price Compare App",
+"summary": "Compares medication prices across pharmacies.",
+"tech": ["React Native", "TypeScript"]
+}
+]
