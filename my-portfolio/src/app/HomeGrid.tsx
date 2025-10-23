@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";    
 import { Code, Mail, Calendar, MapPin, Globe, Briefcase, GraduationCap, ExternalLink, Sparkles, Star } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -76,14 +77,12 @@ export default function HomeGrid() {
       </BentoCard>
 
       {/* Works Gallery (link to /projects) */}
-      <BentoCard className="col-span-12 md:col-span-4">
-        <div className={sectionTitle}>Recent Work</div>
-        <div className={h2}>Works Gallery</div>
-        <div className="relative h-24 rounded-xl border border-neutral-800 bg-neutral-900 overflow-hidden">
-          <Image src="/gallery-placeholder.png" alt="Gallery" fill className="object-cover opacity-80" />
-        </div>
-        <a className="inline-block mt-3 text-sm underline opacity-90" href="/projects">View Works</a>
-      </BentoCard>
+            <BentoCard className="col-span-12 md:col-span-4">
+        {/* ... */}
+        <Link className="inline-block mt-3 text-sm underline opacity-90" href="/projects">
+            View Works
+        </Link>
+        </BentoCard>
 
       {/* === Replacement for Peer Recommendations === */}
       <BentoCard className="col-span-12 md:col-span-4 row-span-2">
@@ -158,18 +157,14 @@ export default function HomeGrid() {
       </BentoCard>
 
       {/* Bottom banner */}
-      <motion.div
-        className="col-span-12 rounded-2xl border border-neutral-800 bg-neutral-900/70 p-4 flex items-center justify-between"
-        initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-      >
+      <motion.div /* ... */>
         <div className="text-sm opacity-80">
-          <Code className="inline size-4 mr-2" />
-          Built with Next.js, Tailwind, Supabase, pgvector, Framer Motion.
+            {/* ... */}
         </div>
-        <a className="text-sm underline flex items-center gap-1" href="/projects">
-          Explore projects <ExternalLink className="size-4" />
-        </a>
-      </motion.div>
+        <Link className="text-sm underline flex items-center gap-1" href="/projects">
+            Explore projects <ExternalLink className="size-4" />
+        </Link>
+        </motion.div>
     </div>
   );
 }

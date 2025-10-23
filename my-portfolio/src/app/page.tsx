@@ -1,3 +1,4 @@
+import Link from "next/link";
 import HomeGrid from "./HomeGrid";
 
 export default function Home() {
@@ -7,8 +8,8 @@ export default function Home() {
         <header className="mb-6 flex items-center justify-between">
           <h1 className="text-2xl md:text-3xl font-bold">Michael Hayford</h1>
           <nav className="text-sm opacity-80 space-x-4">
-            <a href="/" className="underline">Home</a>
-            <a href="/projects" className="underline">Projects</a>
+            <Link href="/" className="underline">Home</Link>
+            <Link href="/projects" className="underline">Projects</Link>
           </nav>
         </header>
         <HomeGrid />
