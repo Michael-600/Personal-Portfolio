@@ -1,1 +1,11 @@
-.vercel
+# Next.js
+.next/
+.vercel/
+out/
+# Node
+node_modules/
+npm-debug.log*
+# Env
+.env*
+# OS
+.DS_Store
