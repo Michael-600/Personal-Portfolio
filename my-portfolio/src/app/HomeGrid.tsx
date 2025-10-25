@@ -19,7 +19,9 @@ export default function HomeGrid() {
         <div className={sectionTitle}>Featured</div>
         <div className={h2}>Tech Stack</div>
         <div className="flex flex-wrap gap-2">
-          {["Python","TypeScript","React","PostgreSQL","Tailwind","Supabase","Elastic","BigQuery"].map(t => (
+          {["Python","TypeScript","React","PostgreSQL","Tailwind","Supabase","Elastic","BigQuery", "Java", "JavaScript", "C++",
+          "HTML","CSS","Git","Linux", "REST APIs","GraphQL","Docker","Kubernetes", "AWS","GCP","Vercel"
+          ].map(t => (
             <span key={t} className={chip}>{t}</span>
           ))}
         </div>
@@ -36,7 +38,7 @@ export default function HomeGrid() {
         <div className="opacity-70 text-sm">Projects shipped</div>
       </BentoCard>
       <BentoCard className="col-span-12 sm:col-span-4 md:col-span-2">
-        <div className="text-3xl font-bold">15+</div>
+        <div className="text-3xl font-bold">20+</div>
         <div className="opacity-70 text-sm">Tech used</div>
       </BentoCard>
       <BentoCard className="col-span-12 sm:col-span-4 md:col-span-2">
@@ -48,7 +50,7 @@ export default function HomeGrid() {
       <BentoCard className="col-span-12 md:col-span-4">
         <div className="flex items-center gap-3">
           <div className="relative size-14 rounded-xl overflow-hidden ring-1 ring-neutral-700">
-            <Image src="/me.jpg" alt="Profile" fill className="object-cover" />
+            <Image src="/me.JPG" alt="Profile" fill className="object-cover" />
           </div>
           <div className="flex-1">
             <div className="text-lg font-semibold">Michael Quansah Hayford</div>
