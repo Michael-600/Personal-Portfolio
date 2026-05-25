@@ -1,28 +1,37 @@
 export type Project = {
   slug: string;
   title: string;
+  subtitle?: string;
   summary: string;
+  impact?: string;
   image: string;
   tags: string[];
   status: "Completed" | "In Progress" | "Prototype";
+  category: "AI" | "Backend" | "Full-Stack" | "Mobile" | "Infra";
+  year: string;
   link?: string;
+  featured?: boolean;
   diagrams?: {
-    workflow?: string;      // Mermaid code
-    before?: string;        // Mermaid code
-    after?: string;         // Mermaid code
+    workflow?: string;
+    before?: string;
+    after?: string;
   };
 };
 
 export const projects: Project[] = [
-  // 1) AOR Pipeline
   {
     slug: "aor-pipeline",
-    title: "AOR Pipeline – Real-Time Account Open Requests",
+    title: "AOR Pipeline",
+    subtitle: "Real-Time Account Open Requests · Goldman Sachs",
     summary:
-      "Reduced AOR exception triage from ~2hrs to <1min by surfacing real-time status/causes via a new REST endpoint and Hubble enrichment.",
+      "Reduced AOR exception triage from ~2 hours to <1 minute by surfacing real-time status and root causes via a new REST endpoint and Hubble ViewObject enrichment.",
+    impact: "SLA: ~2h → <1 min · ops escalations cut by ~95%",
     image: "/proj-aor.png",
-    tags: ["Python", "BigQuery", "REST API", "Hubble", "Orion"],
+    tags: ["Python", "REST API", "BigQuery", "Hubble", "Orion"],
     status: "Completed",
+    category: "Backend",
+    year: "2025",
+    featured: true,
     diagrams: {
       workflow: `
 graph TD
@@ -46,19 +55,22 @@ Orion --> API[New AOR Status API]
 API --> Hubble
 Hubble --> Ops[Ops Console]
 classDef good fill:#16a34a22,stroke:#16a34a66,color:#d1fae5;
-class Ops good;`
+class Ops good;`,
     },
   },
-
-  // 2) Smart Support Assistant
   {
     slug: "smart-support",
-    title: "Smart Support Assistant – Ops Investigation",
+    title: "Smart Support Assistant",
+    subtitle: "LLM-Powered Ops Investigation · Goldman Sachs",
     summary:
-      "CLI + LLM pipeline that pulls Elastic traces and BigQuery logs, auto-writes investigation summaries and recommendations.",
+      "Python CLI that pulls Elastic traces and BigQuery logs, chains them into a templated LLM prompt, and emits Markdown investigation + comparison reports with recommended next actions.",
+    impact: "~50% faster investigations across ops teams",
     image: "/proj-smart-support.png",
-    tags: ["Python", "Elastic", "BigQuery", "LLM"],
+    tags: ["Python", "Elastic", "BigQuery", "Jinja2", "LLM"],
     status: "Completed",
+    category: "AI",
+    year: "2025",
+    featured: true,
     diagrams: {
       workflow: `
 graph TD
@@ -83,54 +95,86 @@ E & BQ --> T[Template + LLM Summarizer]
 T --> R[Investigation Report + Recommendations]
 R -->|posted to| OpsTeam[Ops Channel]
 classDef good fill:#16a34a22,stroke:#16a34a66,color:#a7f3d0;
-class R,OpsTeam good;`
+class R,OpsTeam good;`,
     },
   },
-
-  // 3) Prospect AI
   {
-    slug: "prospect-ai",
-    title: "Prospect AI – Prompt Generation & Output Construction",
+    slug: "prospects-agent",
+    title: "USA Prospects Agent",
+    subtitle: "AI Essay Coach · 1,000+ users",
     summary:
-      "Modular RAG pipeline for prompt generation, output construction, and evaluation with metrics dashboards.",
+      "RAG-powered essay feedback platform that streams responses via the Vercel AI SDK and persists drafts in Supabase. Embedding-based retrieval surfaces rubric-aligned suggestions.",
+    impact: "1,000+ users · weekly release cycle",
     image: "/proj-prospect.png",
-    tags: ["RAG", "Supabase", "Next.js", "LangChain"],
+    tags: ["Next.js", "React", "Supabase", "RAG", "Vercel AI SDK"],
     status: "In Progress",
+    category: "Full-Stack",
+    year: "2024–2025",
+    featured: true,
     diagrams: {
       workflow: `
 graph LR
-PG[Prompt Generator] --> RET[Retriever (pgvector)]
+PG[Prompt Generator] --> RET[Retriever - pgvector]
 RET --> LLM[LLM Output Construction]
-LLM --> EVAL[Evaluator & Metrics]
+LLM --> EVAL[Evaluator and Metrics]
 EVAL --> DB[Metrics Store]
 DB --> Dash[Results Dashboard]`,
       before: `
 graph LR
 Analyst -->|manual prompt| LLM
 LLM --> Output
-Output -->|copy/paste| Doc[Docs/Sheets]
+Output -->|copy/paste| Doc[Docs and Sheets]
 Doc -->|no consistent eval| Gap[Feedback Gap]`,
       after: `
 graph LR
-PG[Prompt Generator] --> RET[Retriever (pgvector)]
+PG[Prompt Generator] --> RET[Retriever - pgvector]
 RET --> LLM[LLM Output Construction]
 LLM --> EVAL[Evaluator]
 EVAL --> DB[(Metrics)]
 DB --> Dash[Results Dashboard]
 classDef good fill:#34d39922,stroke:#34d39966,color:#d1fae5;
-class EVAL,Dash good;`
+class EVAL,Dash good;`,
     },
   },
-
-  // 4) DataZon Mini-Amazon
+  {
+    slug: "beginnercode",
+    title: "BeginnerCode",
+    subtitle: "AI-Guided Coding Education Platform",
+    summary:
+      "Founded as a Duke independent study and grown into a standalone startup. A beginner-friendly coding environment that teaches reasoning over copy-pasting, with AI feedback that asks the right questions.",
+    impact: "Startup spun out of Duke independent study",
+    image: "/proj-beginnercode.png",
+    tags: ["Next.js", "TypeScript", "LLMs", "Supabase", "EdTech"],
+    status: "In Progress",
+    category: "AI",
+    year: "2025",
+    featured: true,
+  },
+  {
+    slug: "jonasrx",
+    title: "JonasRX Mobile",
+    subtitle: "Personalized Digital Support for Seniors",
+    summary:
+      "A cross-platform mobile app (iOS + Android) helping seniors with personalized digital support. I built onboarding, profile flows, and Google Maps integration; ambient AI features in progress.",
+    impact: "Cross-platform launch on iOS + Android",
+    image: "/proj-jonasrx.png",
+    tags: ["React Native", "TypeScript", "Node.js", "PostgreSQL", "Google Maps"],
+    status: "In Progress",
+    category: "Mobile",
+    year: "2025",
+  },
   {
     slug: "datazon-mini-amazon",
-    title: "DataZon – Mini Amazon",
+    title: "DataZon — Mini Amazon",
+    subtitle: "Full-stack E-Commerce + Recsys",
     summary:
-      "Full-stack e-commerce with TF-IDF similarity recs, normalized schema, and admin tooling.",
+      "Full-stack mini-Amazon with normalized PostgreSQL schema, TF-IDF + similarity-based 'Similar items' recommendations, and admin tooling.",
+    impact: "End-to-end e-commerce prototype with recsys",
     image: "/proj-datazon.png",
     tags: ["Flask", "PostgreSQL", "TF-IDF", "RecSys"],
     status: "Prototype",
+    category: "Full-Stack",
+    year: "2024",
     diagrams: {
       workflow: `
 graph TD
@@ -145,8 +189,7 @@ Feedback --> Store[(Signals Store)] --> Ranker`,
 graph TD
 User --> Search[Keyword Search]
 Search --> Results
-Results --> Product
-%% No personalization or loop`,
+Results --> Product`,
       after: `
 graph TD
 User --> SearchQ[Search / Voice]
@@ -157,7 +200,7 @@ Product --> Cart
 Results --> Feedback[Clicks / Purchases]
 Feedback --> Store[(Signals Store)] --> Ranker
 classDef good fill:#60a5fa22,stroke:#60a5fa66,color:#dbeafe;
-class Ranker,Feedback,Store good;`
+class Ranker,Feedback,Store good;`,
     },
   },
 ];

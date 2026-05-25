@@ -1,19 +1,29 @@
-import Link from "next/link";
-import HomeGrid from "./HomeGrid";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import Hero from "@/components/sections/Hero";
+import About from "@/components/sections/About";
+import Experience from "@/components/sections/Experience";
+import Projects from "@/components/sections/Projects";
+import VideoShowcase from "@/components/sections/VideoShowcase";
+import Skills from "@/components/sections/Skills";
+import Leadership from "@/components/sections/Leadership";
+import Contact from "@/components/sections/Contact";
+import RobotAssistant from "@/components/RobotAssistant";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-neutral-950 text-neutral-100">
-      <div className="max-w-7xl mx-auto px-6 py-8">
-        <header className="mb-6 flex items-center justify-between">
-          <h1 className="text-2xl md:text-3xl font-bold">Michael Hayford</h1>
-          <nav className="text-sm opacity-80 space-x-4">
-            <Link href="/" className="underline">Home</Link>
-            <Link href="/projects" className="underline">Projects</Link>
-          </nav>
-        </header>
-        <HomeGrid />
-      </div>
+    <main className="relative min-h-screen text-zinc-100 overflow-x-clip">
+      <Navbar />
+      <Hero />
+      <About />
+      <Experience />
+      <Projects />
+      <VideoShowcase />
+      <Skills />
+      <Leadership />
+      <Contact />
+      <Footer />
+      <RobotAssistant />
     </main>
   );
 }

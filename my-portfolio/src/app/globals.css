@@ -1,4 +1,247 @@
 @import "tailwindcss";
 
-:root { color-scheme: dark; }
-html, body { background: #0a0a0b; }
+@theme {
+  --color-background: #050507;
+  --color-surface: #0a0a0c;
+  --color-surface-elevated: #111114;
+  --color-border: rgba(255, 255, 255, 0.06);
+  --color-border-strong: rgba(255, 255, 255, 0.12);
+
+  --color-text: #fafafa;
+  --color-text-muted: #a1a1aa;
+  --color-text-dim: #71717a;
+
+  --color-accent: #06b6d4;
+  --color-accent-2: #3b82f6;
+  --color-warm: #f59e0b;
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+  --font-pixel: var(--font-pixel), ui-monospace, monospace;
+}
+
+.font-pixel {
+  font-family: var(--font-pixel), ui-monospace, monospace;
+  letter-spacing: 0.02em;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  background: #050507;
+  color: #fafafa;
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(6, 182, 212, 0.35);
+  color: #fafafa;
+}
+
+/* Subtle grain texture overlay */
+.bg-grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.9'/></svg>");
+  mix-blend-mode: overlay;
+}
+
+/* Aurora / spotlight glow used in hero backgrounds */
+.aurora {
+  background:
+    radial-gradient(60% 50% at 20% 20%, rgba(6, 182, 212, 0.22), transparent 60%),
+    radial-gradient(50% 40% at 80% 10%, rgba(59, 130, 246, 0.18), transparent 60%),
+    radial-gradient(40% 40% at 70% 80%, rgba(245, 158, 11, 0.10), transparent 60%);
+}
+
+/* Animated Spline spotlight (from spline-3d-demo) */
+@keyframes spotlight {
+  0% {
+    opacity: 0;
+    transform: translate(-72%, -62%) scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -40%) scale(1);
+  }
+}
+
+.animate-spotlight {
+  animation: spotlight 2s ease 0.4s 1 forwards;
+}
+
+/* Marquee */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+/* Pulsing dot */
+@keyframes pulseDot {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
+  }
+}
+
+.pulse-dot {
+  animation: pulseDot 2s infinite;
+}
+
+/* Card glow on hover */
+.card-glow {
+  position: relative;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.card-glow::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.25), rgba(59, 130, 246, 0.15), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(12px);
+}
+
+.card-glow:hover::before {
+  opacity: 1;
+}
+
+/* Spline loader */
+.loader {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-top-color: #06b6d4;
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* === Pixel / outline accents ============================================ */
+
+/**
+ * Subtle L-shaped corner brackets that fade in on hover.
+ * Use on any card by adding the `pixel-corners` class.
+ */
+.pixel-corners {
+  position: relative;
+}
+.pixel-corners::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  pointer-events: none;
+  background:
+    linear-gradient(to right, rgba(6, 182, 212, 0.6) 14px, transparent 14px) top left / 14px 2px no-repeat,
+    linear-gradient(to bottom, rgba(6, 182, 212, 0.6) 14px, transparent 14px) top left / 2px 14px no-repeat,
+    linear-gradient(to left, rgba(6, 182, 212, 0.6) 14px, transparent 14px) top right / 14px 2px no-repeat,
+    linear-gradient(to bottom, rgba(6, 182, 212, 0.6) 14px, transparent 14px) top right / 2px 14px no-repeat,
+    linear-gradient(to right, rgba(6, 182, 212, 0.6) 14px, transparent 14px) bottom left / 14px 2px no-repeat,
+    linear-gradient(to top, rgba(6, 182, 212, 0.6) 14px, transparent 14px) bottom left / 2px 14px no-repeat,
+    linear-gradient(to left, rgba(6, 182, 212, 0.6) 14px, transparent 14px) bottom right / 14px 2px no-repeat,
+    linear-gradient(to top, rgba(6, 182, 212, 0.6) 14px, transparent 14px) bottom right / 2px 14px no-repeat;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.pixel-corners:hover::after {
+  opacity: 1;
+}
+
+/**
+ * Chunky offset shadow (no blur) — gives a "stamped block" feel.
+ * Pair with `pixel-frame` on photos and key CTAs.
+ */
+.pixel-shadow {
+  box-shadow:
+    6px 6px 0 0 rgba(6, 182, 212, 0.35),
+    1px 1px 0 0 rgba(255, 255, 255, 0.08) inset;
+}
+
+.pixel-shadow-amber {
+  box-shadow:
+    6px 6px 0 0 rgba(245, 158, 11, 0.4),
+    1px 1px 0 0 rgba(255, 255, 255, 0.08) inset;
+}
+
+/**
+ * Photo / polaroid-style frame: sharp corners, thin solid border,
+ * chunky offset shadow. The white border evokes a polaroid.
+ */
+.pixel-frame {
+  border: 2px solid rgba(255, 255, 255, 0.92);
+  border-radius: 4px;
+  box-shadow:
+    8px 8px 0 0 rgba(6, 182, 212, 0.55),
+    14px 14px 0 0 rgba(59, 130, 246, 0.25),
+    0 20px 40px -20px rgba(0, 0, 0, 0.6);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.pixel-frame:hover {
+  transform: translate(-2px, -2px);
+  box-shadow:
+    10px 10px 0 0 rgba(6, 182, 212, 0.7),
+    18px 18px 0 0 rgba(59, 130, 246, 0.3),
+    0 24px 48px -20px rgba(0, 0, 0, 0.7);
+}
+
+/**
+ * "New" pixel tag, used to mark fresh content.
+ */
+.pixel-tag {
+  font-family: var(--font-pixel), ui-monospace, monospace;
+  letter-spacing: 0.06em;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+  box-shadow:
+    2px 2px 0 0 rgba(0, 0, 0, 0.4),
+    inset 1px 1px 0 0 rgba(255, 255, 255, 0.25);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
