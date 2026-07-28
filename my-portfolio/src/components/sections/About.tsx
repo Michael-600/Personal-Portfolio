@@ -15,12 +15,12 @@ import Card from "@/components/ui/Card";
 import { profile } from "@/data/profile";
 
 const INTERESTS = [
-  { icon: Briefcase, label: "Software Engineering", tone: "text-cyan-300" },
-  { icon: Rocket, label: "Startups & Entrepreneurship", tone: "text-amber-300" },
-  { icon: Lightbulb, label: "AI / LLM Products", tone: "text-blue-300" },
-  { icon: Compass, label: "Consulting & Strategy", tone: "text-violet-300" },
-  { icon: HeartHandshake, label: "Product Engineering", tone: "text-green-300" },
-  { icon: GraduationCap, label: "Research & Learning", tone: "text-pink-300" },
+  { icon: Briefcase, label: "Software Engineering" },
+  { icon: Rocket, label: "Startups & Entrepreneurship" },
+  { icon: Lightbulb, label: "AI / LLM Products" },
+  { icon: Compass, label: "Consulting & Strategy" },
+  { icon: HeartHandshake, label: "Product Engineering" },
+  { icon: GraduationCap, label: "Research & Learning" },
 ];
 
 export default function About() {
@@ -101,10 +101,10 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.45, delay: i * 0.05 }}
-                className="flex items-center gap-3 rounded-xl border border-white/[0.06] bg-white/[0.02] px-4 py-3 hover:border-white/15 transition"
+                className="group flex items-center gap-3 rounded-xl border border-white/[0.06] bg-white/[0.02] px-4 py-3 hover:border-white/15 transition"
               >
                 <div className="grid place-items-center size-9 rounded-lg bg-white/[0.04] border border-white/10">
-                  <it.icon className={`size-4 ${it.tone}`} />
+                  <it.icon className="size-4 text-zinc-400 group-hover:text-cyan-300 transition-colors" />
                 </div>
                 <span className="text-sm text-zinc-200">{it.label}</span>
               </motion.div>

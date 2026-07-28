@@ -12,7 +12,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { profile } from "@/data/profile";
 import { marqueeSkills } from "@/data/skills";
-import GradientText from "@/components/ui/GradientText";
 import MinecraftButton from "@/components/ui/MinecraftButton";
 import RobotHero from "@/components/spline/RobotHero";
 
@@ -22,9 +21,8 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen pt-28 md:pt-32 pb-16 overflow-hidden"
     >
-      {/* Aurora backdrop */}
-      <div className="absolute inset-0 aurora -z-10 opacity-90" />
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,rgba(6,182,212,0.10),transparent_60%)]" />
+      {/* Single, quiet glow anchored to the top — no aurora wash */}
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_70%_45%_at_50%_-10%,rgba(6,182,212,0.07),transparent_70%)]" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-8 items-center">
@@ -36,7 +34,7 @@ export default function Hero() {
               transition={{ duration: 0.7, delay: 0.05 }}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.05] text-white"
             >
-              Hi, I&apos;m <GradientText>Michael</GradientText>.
+              Hi, I&apos;m <span className="text-cyan-300">Michael</span>.
               <br />I build pragmatic,
               <br />
               <span className="text-zinc-400">AI-powered software.</span>
@@ -48,8 +46,8 @@ export default function Hero() {
               transition={{ duration: 0.7, delay: 0.15 }}
               className="mt-6 max-w-xl text-base md:text-lg text-zinc-400 leading-relaxed"
             >
-              Duke CS &apos;26 · Incoming engineer at Goldman Sachs · Senior engineer
-              at JonasRX · Founder of <span className="text-zinc-200 font-medium">BeginnerCode</span>.
+              Duke CS &apos;26 · Senior engineer at JonasRX · Founder of{" "}
+              <span className="text-zinc-200 font-medium">BeginnerCode</span>.
               I ship backend systems, AI products, and full-stack MVPs with real
               users.
             </motion.p>

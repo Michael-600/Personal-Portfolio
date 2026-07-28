@@ -5,20 +5,11 @@ import Link from "next/link";
 import { ArrowUpRight, TrendingUp } from "lucide-react";
 import { projects } from "@/data/projects";
 import Badge from "@/components/ui/Badge";
-import { cn } from "@/lib/utils";
 
 const STATUS_TONE = {
   Completed: "green",
   "In Progress": "amber",
   Prototype: "blue",
-} as const;
-
-const CATEGORY_TONE = {
-  AI: "violet",
-  Backend: "cyan",
-  "Full-Stack": "blue",
-  Mobile: "amber",
-  Infra: "green",
 } as const;
 
 export default function ProjectsGrid() {
@@ -41,20 +32,9 @@ export default function ProjectsGrid() {
             href={`/projects/${p.slug}`}
             className="group block rounded-2xl border border-white/[0.07] bg-white/[0.02] overflow-hidden hover:border-white/15 transition pixel-corners"
           >
-            <div
-              className={cn(
-                "relative h-40 overflow-hidden",
-                "bg-gradient-to-br",
-                p.category === "AI" && "from-violet-500/30 via-fuchsia-500/10 to-zinc-950",
-                p.category === "Backend" && "from-cyan-500/30 via-blue-500/10 to-zinc-950",
-                p.category === "Full-Stack" && "from-blue-500/30 via-indigo-500/10 to-zinc-950",
-                p.category === "Mobile" && "from-amber-500/30 via-orange-500/10 to-zinc-950",
-                p.category === "Infra" && "from-green-500/30 via-emerald-500/10 to-zinc-950"
-              )}
-            >
-              <div className="absolute inset-0 opacity-50 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.08),transparent_60%)]" />
+            <div className="relative h-40 overflow-hidden bg-[#0a0d12] border-b border-white/[0.06]">
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-7xl font-bold text-white/[0.06] tracking-tighter">
+                <div className="text-7xl font-bold text-white/[0.05] tracking-tighter group-hover:text-white/[0.08] transition-colors">
                   {p.title
                     .split(" ")
                     .map((w) => w[0])
@@ -62,10 +42,9 @@ export default function ProjectsGrid() {
                     .slice(0, 3)}
                 </div>
               </div>
+              <div className="absolute bottom-0 left-0 h-[2px] w-14 bg-cyan-400/70 group-hover:w-24 transition-all duration-300" />
               <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
-                <Badge tone={CATEGORY_TONE[p.category] as "violet" | "cyan" | "blue" | "amber" | "green"}>
-                  {p.category}
-                </Badge>
+                <Badge>{p.category}</Badge>
                 <Badge tone={STATUS_TONE[p.status] as "green" | "amber" | "blue"}>
                   {p.status}
                 </Badge>

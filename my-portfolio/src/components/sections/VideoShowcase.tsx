@@ -7,11 +7,12 @@ import Badge from "@/components/ui/Badge";
 import { videos, type VideoItem } from "@/data/videos";
 import { cn } from "@/lib/utils";
 
+// Flat single-color placeholder tints — no gradient washes.
 const ACCENT: Record<NonNullable<VideoItem["accent"]>, string> = {
-  cyan: "from-cyan-500/30 via-cyan-500/5 to-transparent",
-  blue: "from-blue-500/30 via-blue-500/5 to-transparent",
-  amber: "from-amber-500/30 via-amber-500/5 to-transparent",
-  violet: "from-violet-500/30 via-violet-500/5 to-transparent",
+  cyan: "bg-cyan-500/[0.08]",
+  blue: "bg-blue-500/[0.08]",
+  amber: "bg-amber-500/[0.08]",
+  violet: "bg-violet-500/[0.08]",
 };
 
 function VideoCard({ v, i }: { v: VideoItem; i: number }) {
@@ -36,12 +37,7 @@ function VideoCard({ v, i }: { v: VideoItem; i: number }) {
             className="absolute inset-0 w-full h-full object-cover"
           />
         ) : (
-          <div
-            className={cn(
-              "absolute inset-0 bg-gradient-to-br",
-              ACCENT[v.accent ?? "cyan"]
-            )}
-          />
+          <div className={cn("absolute inset-0", ACCENT[v.accent ?? "cyan"])} />
         )}
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-zinc-950/20 to-transparent" />
@@ -132,9 +128,7 @@ export default function VideoShowcase() {
       id="latest"
       eyebrow={
         <span className="inline-flex items-center gap-2">
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 to-blue-400 font-semibold">
-            Latest Work
-          </span>
+          <span className="font-semibold">Latest Work</span>
           <span className="inline-flex items-center justify-center px-1.5 py-0.5 rounded-sm text-[8px] font-pixel text-zinc-950 bg-amber-400 pixel-tag">
             NEW
           </span>
@@ -142,10 +136,8 @@ export default function VideoShowcase() {
       }
       title={
         <>
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 via-cyan-200 to-blue-400">
-            Demos
-          </span>{" "}
-          &amp; <span className="text-zinc-400">walkthroughs.</span>
+          <span className="text-cyan-300">Demos</span> &amp;{" "}
+          <span className="text-zinc-400">walkthroughs.</span>
         </>
       }
       description="A growing reel of project demos, app walkthroughs, and technical experiments. Real videos drop here as I ship — these placeholders are wired to swap in seconds."

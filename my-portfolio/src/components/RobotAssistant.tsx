@@ -83,13 +83,13 @@ export default function RobotAssistant() {
             className={cn(
               "w-[min(92vw,380px)] h-[520px] flex flex-col",
               "rounded-2xl border border-white/10 bg-zinc-950/90 backdrop-blur-xl",
-              "shadow-[0_30px_60px_-20px_rgba(6,182,212,0.4)]"
+              "shadow-[0_30px_60px_-20px_rgba(0,0,0,0.8)]"
             )}
           >
             {/* Header */}
             <div className="flex items-center justify-between px-4 py-3 border-b border-white/10">
               <div className="flex items-center gap-2.5">
-                <div className="relative grid place-items-center size-8 rounded-lg bg-gradient-to-br from-cyan-400 to-blue-500">
+                <div className="relative grid place-items-center size-8 rounded-lg bg-cyan-400">
                   <Bot className="size-4 text-zinc-950" />
                   <span className="absolute -bottom-0.5 -right-0.5 size-2.5 rounded-full bg-green-400 ring-2 ring-zinc-950 pulse-dot" />
                 </div>
@@ -124,7 +124,7 @@ export default function RobotAssistant() {
                     className={cn(
                       "max-w-[85%] rounded-xl px-3 py-2 text-sm leading-relaxed",
                       m.role === "user"
-                        ? "bg-gradient-to-br from-cyan-500/90 to-blue-600/90 text-white"
+                        ? "bg-cyan-400 text-zinc-950"
                         : "bg-white/[0.05] text-zinc-200 border border-white/[0.06]"
                     )}
                   >
@@ -178,7 +178,7 @@ export default function RobotAssistant() {
               <button
                 type="submit"
                 disabled={loading || !input.trim()}
-                className="grid place-items-center size-10 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-500 text-zinc-950 disabled:opacity-50"
+                className="grid place-items-center size-10 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-zinc-950 disabled:opacity-50 transition"
                 aria-label="Send"
               >
                 <Send className="size-4" />
@@ -197,12 +197,12 @@ export default function RobotAssistant() {
             className={cn(
               "group flex items-center gap-2 pl-2 pr-4 py-2 rounded-full",
               "bg-zinc-950/80 border border-white/10 backdrop-blur-xl",
-              "shadow-[0_20px_40px_-10px_rgba(6,182,212,0.5)]",
+              "shadow-[0_20px_40px_-12px_rgba(0,0,0,0.7)]",
               "hover:border-cyan-400/40 transition"
             )}
             aria-label="Open robot assistant"
           >
-            <span className="relative grid place-items-center size-8 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500">
+            <span className="relative grid place-items-center size-8 rounded-full bg-cyan-400">
               <Bot className="size-4 text-zinc-950" />
               <span className="absolute -top-0.5 -right-0.5 size-2.5 rounded-full bg-green-400 ring-2 ring-zinc-950 pulse-dot" />
             </span>

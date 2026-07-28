@@ -15,8 +15,7 @@ type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 const variants: Record<Variant, string> = {
-  primary:
-    "bg-gradient-to-r from-cyan-400 to-blue-500 text-zinc-950 hover:brightness-110 shadow-[0_0_24px_-6px_rgba(6,182,212,0.6)]",
+  primary: "bg-cyan-400 text-zinc-950 hover:bg-cyan-300",
   secondary:
     "bg-white/[0.06] text-white border border-white/10 hover:bg-white/[0.10] hover:border-white/20",
   ghost: "bg-transparent text-zinc-300 hover:text-white hover:bg-white/[0.05]",

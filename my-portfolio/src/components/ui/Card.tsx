@@ -7,7 +7,6 @@ import { cn } from "@/lib/utils";
 type Props = HTMLMotionProps<"div"> & {
   children: ReactNode;
   interactive?: boolean;
-  glow?: boolean;
   padded?: boolean;
 };
 
@@ -15,7 +14,6 @@ export default function Card({
   children,
   className,
   interactive = false,
-  glow = false,
   padded = true,
   ...rest
 }: Props) {
@@ -28,7 +26,6 @@ export default function Card({
         "shadow-[inset_0_1px_0_0_rgba(255,255,255,0.04)]",
         "backdrop-blur-sm pixel-corners",
         interactive && "hover:border-white/15 transition-colors",
-        glow && "card-glow",
         padded && "p-6",
         className
       )}

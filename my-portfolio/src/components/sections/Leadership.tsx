@@ -13,11 +13,12 @@ const TAG_ICON = {
   Community: Users,
 } as const;
 
-const TAG_TONE: Record<Leadership["tag"], "amber" | "cyan" | "violet" | "green"> = {
+// Two-accent system: amber marks founder/startup work, everything else stays neutral.
+const TAG_TONE: Record<Leadership["tag"], "amber" | "default"> = {
   Startup: "amber",
-  Initiative: "cyan",
-  Competition: "violet",
-  Community: "green",
+  Initiative: "default",
+  Competition: "default",
+  Community: "default",
 };
 
 export default function LeadershipSection() {
@@ -45,13 +46,10 @@ export default function LeadershipSection() {
               whileHover={{ y: -3 }}
               className="relative rounded-2xl border border-white/[0.07] bg-white/[0.02] p-6 overflow-hidden hover:border-white/15 transition pixel-corners"
             >
-              {/* Decorative corner gradient */}
-              <div className="absolute -top-20 -right-20 size-48 rounded-full bg-gradient-to-br from-cyan-500/10 to-blue-500/5 blur-2xl pointer-events-none" />
-
               <div className="relative">
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex items-center gap-3">
-                    <div className="grid place-items-center size-11 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 border border-white/10 text-cyan-300">
+                    <div className="grid place-items-center size-11 rounded-xl bg-cyan-400/10 border border-white/10 text-cyan-300">
                       <Icon className="size-5" />
                     </div>
                     <div>

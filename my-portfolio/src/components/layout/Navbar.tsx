@@ -60,8 +60,7 @@ export default function Navbar() {
             style={{
               fontSize: "clamp(10px, 1.6vw, 14px)",
               letterSpacing: "0.08em",
-              textShadow:
-                "2px 2px 0 rgba(0,0,0,0.55), 0 0 18px rgba(6,182,212,0.35)",
+              textShadow: "2px 2px 0 rgba(0,0,0,0.55)",
             }}
           >
             MICHAEL HAYFORD
@@ -75,7 +74,7 @@ export default function Navbar() {
               <a
                 key={l.href}
                 href={l.href}
-                className="relative px-3 py-1.5 rounded-md text-sm font-semibold bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 to-blue-400 hover:from-cyan-200 hover:to-blue-300 transition"
+                className="relative px-3 py-1.5 rounded-md text-sm font-semibold text-cyan-300 hover:text-cyan-200 transition"
               >
                 {l.label}
                 <span className="absolute -top-1.5 -right-3 inline-flex items-center justify-center px-1.5 py-0.5 rounded-sm text-[8px] font-pixel text-zinc-950 bg-amber-400 pixel-tag">
@@ -118,7 +117,7 @@ export default function Navbar() {
             href={profile.resumeUrl}
             target="_blank"
             rel="noreferrer noopener"
-            className="hidden sm:inline-flex items-center gap-1.5 h-9 px-3 rounded-lg bg-gradient-to-r from-cyan-400 to-blue-500 text-zinc-950 font-medium text-sm hover:brightness-110 transition"
+            className="hidden sm:inline-flex items-center gap-1.5 h-9 px-3 rounded-lg bg-cyan-400 text-zinc-950 font-medium text-sm hover:bg-cyan-300 transition"
           >
             <FileText className="size-4" /> Resume
           </a>
@@ -151,7 +150,7 @@ export default function Navbar() {
                   className={cn(
                     "flex items-center justify-between px-3 py-2.5 rounded-lg text-sm hover:bg-white/[0.05]",
                     l.highlight
-                      ? "text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-400 font-semibold"
+                      ? "text-cyan-300 font-semibold"
                       : "text-zinc-200 hover:text-white"
                   )}
                 >
@@ -168,7 +167,7 @@ export default function Navbar() {
                 target="_blank"
                 rel="noreferrer noopener"
                 onClick={() => setOpen(false)}
-                className="mt-3 inline-flex items-center gap-2 px-3 py-2.5 rounded-lg bg-gradient-to-r from-cyan-400 to-blue-500 text-zinc-950 font-medium text-sm"
+                className="mt-3 inline-flex items-center gap-2 px-3 py-2.5 rounded-lg bg-cyan-400 text-zinc-950 font-medium text-sm"
               >
                 <FileText className="size-4" /> Download Resume
               </a>

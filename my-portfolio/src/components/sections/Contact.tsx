@@ -14,35 +14,35 @@ import Section from "@/components/ui/Section";
 import MinecraftButton from "@/components/ui/MinecraftButton";
 import { profile } from "@/data/profile";
 
+// Cyan is reserved for the primary channel (email); the rest stay neutral.
 const CHANNELS = [
   {
     icon: Mail,
     label: "Email",
     value: profile.email,
     href: `mailto:${profile.email}`,
-    tone: "from-cyan-500/20 to-blue-500/20 text-cyan-300",
-    primary: true,
+    iconClass: "bg-cyan-400/10 text-cyan-300",
   },
   {
     icon: Linkedin,
     label: "LinkedIn",
     value: "Michael Hayford",
     href: profile.social.linkedin,
-    tone: "from-blue-500/20 to-indigo-500/20 text-blue-300",
+    iconClass: "bg-white/[0.04] text-zinc-300",
   },
   {
     icon: Github,
     label: "GitHub",
     value: "@Michael-600",
     href: profile.social.github,
-    tone: "from-zinc-500/20 to-zinc-700/20 text-zinc-200",
+    iconClass: "bg-white/[0.04] text-zinc-300",
   },
   {
     icon: FileText,
     label: "Resume",
     value: "Download PDF",
     href: profile.resumeUrl,
-    tone: "from-amber-500/20 to-orange-500/20 text-amber-300",
+    iconClass: "bg-white/[0.04] text-zinc-300",
   },
 ];
 
@@ -74,12 +74,9 @@ export default function Contact() {
             whileHover={{ y: -3 }}
             className="group relative rounded-2xl border border-white/[0.07] bg-white/[0.02] p-5 hover:border-white/15 transition overflow-hidden pixel-corners"
           >
-            <div
-              className={`absolute -top-12 -right-12 size-40 rounded-full bg-gradient-to-br ${c.tone.split(" text-")[0]} blur-2xl opacity-50 pointer-events-none`}
-            />
             <div className="relative flex items-center gap-4">
               <div
-                className={`grid place-items-center size-12 rounded-xl bg-gradient-to-br ${c.tone} border border-white/10`}
+                className={`grid place-items-center size-12 rounded-xl border border-white/10 ${c.iconClass}`}
               >
                 <c.icon className="size-5" />
               </div>
@@ -102,11 +99,11 @@ export default function Contact() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.1 }}
-        className="mt-8 rounded-2xl border border-white/[0.07] bg-gradient-to-br from-cyan-500/[0.04] to-blue-500/[0.04] p-6 md:p-8"
+        className="mt-8 rounded-2xl border border-white/[0.07] bg-white/[0.02] p-6 md:p-8"
       >
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
           <div className="flex items-start gap-4">
-            <div className="grid place-items-center size-12 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-500 text-zinc-950 shrink-0">
+            <div className="grid place-items-center size-12 rounded-xl bg-cyan-400 text-zinc-950 shrink-0">
               <Sparkles className="size-5" />
             </div>
             <div>

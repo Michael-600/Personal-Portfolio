@@ -69,17 +69,16 @@ export default function RobotHero({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "relative w-full h-[420px] md:h-[520px] rounded-3xl overflow-hidden",
+        "relative w-full h-[420px] md:h-[520px] rounded-2xl overflow-hidden",
         "border border-white/[0.08] bg-black/40",
-        "shadow-[0_30px_60px_-30px_rgba(6,182,212,0.35)]",
+        "shadow-[0_30px_60px_-30px_rgba(0,0,0,0.8)]",
         className
       )}
     >
       <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="#7dd3fc" />
 
-      {/* Backdrop layers */}
-      <div className="absolute inset-0 -z-0 aurora opacity-80" />
-      <div className="absolute inset-0 -z-0 bg-[radial-gradient(circle_at_60%_40%,rgba(6,182,212,0.15),transparent_60%)]" />
+      {/* Backdrop — one quiet glow behind the robot */}
+      <div className="absolute inset-0 -z-0 bg-[radial-gradient(circle_at_60%_40%,rgba(6,182,212,0.10),transparent_60%)]" />
 
       {/* Floating pixel particles */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -201,7 +200,7 @@ export default function RobotHero({ className }: { className?: string }) {
               }}
             >
               <div
-                className="grid place-items-center size-7 rounded-sm bg-gradient-to-br from-amber-300 to-amber-500"
+                className="grid place-items-center size-7 rounded-sm bg-amber-400"
                 style={{ boxShadow: "inset 1px 1px 0 rgba(255,255,255,0.4)" }}
               >
                 <Trophy className="size-4 text-zinc-950" />

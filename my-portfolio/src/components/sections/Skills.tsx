@@ -48,7 +48,7 @@ export default function Skills() {
               className="group rounded-2xl border border-white/[0.07] bg-white/[0.02] p-6 hover:border-white/15 transition pixel-corners"
             >
               <div className="flex items-center gap-3">
-                <div className="grid place-items-center size-10 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 border border-white/10 text-cyan-300">
+                <div className="grid place-items-center size-10 rounded-xl bg-cyan-400/10 border border-white/10 text-cyan-300">
                   <Icon className="size-5" />
                 </div>
                 <h3 className="text-base font-semibold text-white">{cat.name}</h3>

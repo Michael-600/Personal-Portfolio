@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, Sparkles, ArrowUpRight } from "lucide-react";
+import { MapPin, ArrowUpRight } from "lucide-react";
 import Section from "@/components/ui/Section";
 import Badge from "@/components/ui/Badge";
 import { experiences } from "@/data/experience";
@@ -21,7 +21,7 @@ export default function Experience() {
     >
       <div className="relative">
         {/* Vertical timeline line — hidden on mobile */}
-        <div className="hidden md:block absolute left-[7.25rem] top-2 bottom-2 w-px bg-gradient-to-b from-cyan-400/40 via-white/10 to-transparent" />
+        <div className="hidden md:block absolute left-[7.25rem] top-2 bottom-2 w-px bg-white/[0.08]" />
 
         <ol className="space-y-8 md:space-y-10">
           {experiences.map((exp, i) => (
@@ -101,8 +101,8 @@ export default function Experience() {
 
                   <ul className="mt-3 space-y-1.5 text-sm text-zinc-400">
                     {exp.bullets.map((b, idx) => (
-                      <li key={idx} className="flex items-start gap-2">
-                        <Sparkles className="mt-1 size-3 text-cyan-400 shrink-0" />
+                      <li key={idx} className="flex items-start gap-2.5">
+                        <span className="mt-[0.55rem] size-1 bg-cyan-400/70 shrink-0" />
                         <span>{b}</span>
                       </li>
                     ))}
